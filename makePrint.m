@@ -18,15 +18,33 @@ if strcmp(type, 'pdf')
     set(gcf, 'color', 'none')
     set(gcf, 'InvertHardCopy', 'off')
     
-    PrintPlot(path, fileName, type)
+    printPlot(path, fileName, type)
     
     set(gcf, 'color', c)
     set(gcf, 'InvertHardCopy', invert)
     
 else
     
-    PrintPlot(path, fileName, type)
+    printPlot(path, fileName, type)
     
 end
+
+    function printPlot(theFigurePath, printName, type)
+        
+        theFullPath = theFigurePath;
+        
+        if ~exist(theFullPath, 'dir')
+            
+            mkdir(theFullPath);
+            
+        end
+        
+        printFile = sprintf('%s/%s.%s', theFullPath, printName, type);
+        
+        print(sprintf('-d%s', type), printFile)
+        
+        fprintf('Printing file %s.\n', printFile)
+        
+    end
 
 end
