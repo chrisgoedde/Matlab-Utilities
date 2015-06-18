@@ -1,4 +1,4 @@
-function addFrame(n, figHandle, fileName)
+function addFrameToGIF(n, figHandle, fileName)
 
 [ im, map ] = rgb2ind(frame2im(getframe(figHandle)), 256, 'nodither');
 if n == 1
